@@ -39,8 +39,8 @@ def tri_taxonomique(arguments):
 
     ##############################################################################
 
-    dico_taxo = {}  # organise tq : dico_taxo = {'eukaryote' : [[123, 'ABCD', 'Lorem ipsum', 'eukaryote', 'metazoa', ...], [ ...]] , [[],[]]}
-    dico_taxo_codealpha = {}  # organise tq : dico_taxo_codealpha = {'ABCD' : [123, 'ABCD', 'Lorem ipsum', 'eukaryote', 'metazoa', ...], 'EFGH4 : [...]}
+    dico_taxo = {}  # organise tq : dico_taxo = {'eukaryote' : [['ABCD', 'eukaryote', 'metazoa', ...,  'Lorem ipsum'], [ ...]] , [[],[]]}
+    dico_taxo_codealpha = {}  # organise tq : dico_taxo_codealpha = {'ABCD' : ['ABCD','eukaryote', 'metazoa', ..., 'Lorem ipsum'], 'EFGH4 : [...]}
 
     # On fait un dictionnaire avec en clef la valeur du niveau taxo choisi et en valeurs toute la ligne (sous forme de liste)
     for line_taxo in taxo:
@@ -119,7 +119,8 @@ def tri_taxonomique(arguments):
         dico_pour_tri[k] = {}
         for liste_taxo in v:
             dico_pour_tri[k][liste_taxo[0]] = dico_count[liste_taxo[0]]
-
+    
+    # Selection du genome avec le plus de genes pour chaque valeur du niveau taxo determine
     filtered_dico = {}
     for k, v in dico_pour_tri.iteritems():
         max_code = max(v.iterkeys(), key=(lambda key: v[key]))
@@ -130,12 +131,6 @@ def tri_taxonomique(arguments):
         my_new_line = "\t".join(v) + "\n"
         sortie_taxo.write(my_new_line)
 
-    """
-
-    # preparation du dictionnaire permettant de selectionner uniquement les especes retenues
-    dico_filtre = {}
-
-    """
 
     entree.close()
     taxo.close()
