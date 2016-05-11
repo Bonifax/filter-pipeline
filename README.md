@@ -7,3 +7,7 @@ tri_matrix.py uses the output from tri_taxonomique.py and the original gene fami
 
 tri.py allows to automatically use the two functions detailed above one after the other.
 
+Taxonomie_propre_sorted.txt is the complete file used for the analysis I performed. It was generated thanks to NCBI Refseq informations and homogenized and filtered manually.
+
+echantillon_500000.txt is a sample (500.000 first lines) from the complete file used in the analysis. It was generated directly from the HOGENOM7 database.
+
